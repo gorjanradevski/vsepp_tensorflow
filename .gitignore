@@ -1,0 +1,6 @@
+/.DS_Store
+/models
+/data/Flickr30k_dataset/
+/data/Flickr8k_dataset/
+/.idea
+__pycache__/
