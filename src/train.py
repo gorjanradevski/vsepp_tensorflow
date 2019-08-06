@@ -205,7 +205,7 @@ def parse_args():
     parser.add_argument(
         "--save_model_path",
         type=str,
-        default="models/tryout",
+        default="models/untitled",
         help="Where to save the model.",
     )
     parser.add_argument(
