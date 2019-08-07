@@ -133,12 +133,15 @@ def train(
             except tf.errors.OutOfRangeError:
                 pass
 
-            if evaluator_val.is_best_image2text_recall_at_k():
-                evaluator_val.update_best_image2text_recall_at_k()
+            if evaluator_val.is_best_recall_at_k():
+                evaluator_val.update_best_recall_at_k()
                 logger.info("=============================")
                 logger.info(
-                    f"Found new best on epoch {e+1} with recall at 1, 5, 10: "
-                    f"{evaluator_val.best_image2text_recall_at_k}! Saving model..."
+                    f"Found new best on epoch {e+1}!! Saving model!\n"
+                    f"Current image-text recall at 1, 5, 10: "
+                    f"{evaluator_val.best_image2text_recall_at_k} \n"
+                    f"Current text-image recall at 1, 5, 10: "
+                    f"{evaluator_val.best_text2image_recall_at_k} \n"
                 )
                 logger.info("=============================")
                 model.save_model(sess, save_model_path)

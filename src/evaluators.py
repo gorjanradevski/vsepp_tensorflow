@@ -53,22 +53,25 @@ class Evaluator:
     def update_best_loss(self):
         self.best_loss = self.loss
 
-    def is_best_image2text_recall_at_k(self) -> bool:
+    def is_best_recall_at_k(self) -> bool:
+        # Update current
         self.cur_image2text_recall_at_k = self.image2text_recall_at_k()
-        if sum(self.cur_image2text_recall_at_k) > sum(self.best_image2text_recall_at_k):
-            return True
-        return False
-
-    def update_best_image2text_recall_at_k(self):
-        self.best_image2text_recall_at_k = self.cur_image2text_recall_at_k
-
-    def is_best_text2image_recall_at_k(self) -> bool:
         self.cur_text2image_recall_at_k = self.text2image_recall_at_k()
-        if sum(self.cur_text2image_recall_at_k) > sum(self.best_text2image_recall_at_k):
+        # Sum recalls
+        image2text_recall_at_ks = sum(self.cur_image2text_recall_at_k)
+        text2image_recall_at_ks = sum(self.cur_text2image_recall_at_k)
+        # Sum best recalls
+        best_image2text_recall_at_ks = sum(self.best_image2text_recall_at_k)
+        best_text2image_recall_at_ks = sum(self.best_text2image_recall_at_k)
+        # Check if the current are the better
+        if (image2text_recall_at_ks + text2image_recall_at_ks) > (
+            best_image2text_recall_at_ks + best_text2image_recall_at_ks
+        ):
             return True
         return False
 
-    def update_best_text2image_recall_at_k(self):
+    def update_best_recall_at_k(self):
+        self.best_image2text_recall_at_k = self.cur_image2text_recall_at_k
         self.best_text2image_recall_at_k = self.cur_text2image_recall_at_k
 
     def image2text_recall_at_k(self) -> Tuple[float, float, float]:
