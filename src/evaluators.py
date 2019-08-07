@@ -12,10 +12,10 @@ class Evaluator:
     def __init__(self, num_samples: int = 0, num_features: int = 0):
         self.loss = 0.0
         self.best_loss = sys.maxsize
-        self.best_image2text_recall_at_k = -1.0
-        self.cur_image2text_recall_at_k = -1.0
-        self.best_text2image_recall_at_k = -1.0
-        self.cur_text2image_recall_at_k = -1.0
+        self.best_image2text_recall_at_k = (-1.0, -1.0, -1.0)
+        self.cur_image2text_recall_at_k = (-1.0, -1.0, -1.0)
+        self.best_text2image_recall_at_k = (-1.0, -1.0, -1.0)
+        self.cur_text2image_recall_at_k = (-1.0, -1.0, -1.0)
         self.index_update = 0
         self.num_samples = num_samples
         self.num_features = num_features
