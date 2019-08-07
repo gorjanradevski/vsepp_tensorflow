@@ -141,7 +141,7 @@ def train(
                     f"Current image-text recall at 1, 5, 10: "
                     f"{evaluator_val.best_image2text_recall_at_k} \n"
                     f"Current text-image recall at 1, 5, 10: "
-                    f"{evaluator_val.best_text2image_recall_at_k} \n"
+                    f"{evaluator_val.best_text2image_recall_at_k}"
                 )
                 logger.info("=============================")
                 model.save_model(sess, save_model_path)
