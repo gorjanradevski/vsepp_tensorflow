@@ -3,10 +3,13 @@ from typing import List, Tuple, Generator
 import logging
 from abc import ABC, abstractmethod
 
-from constants import WIDTH, HEIGHT, NUM_CHANNELS
-
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+
+WIDTH = 224
+HEIGHT = 224
+NUM_CHANNELS = 3
 
 
 class BaseLoader(ABC):

@@ -192,7 +192,7 @@ class VsePpModel:
                 learning_rate,
                 self.global_step,
                 decay_steps,
-                0.5,
+                decay_rate=0.1,
                 staircase=True,
                 name="lr_decay",
             )
