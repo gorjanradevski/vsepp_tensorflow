@@ -61,7 +61,7 @@ class VsePpModel:
                 kernel_initializer=tf.glorot_uniform_initializer(),
             )
 
-            return linear_layer
+            return tf.math.l2_normalize(linear_layer, axis=1)
 
     def text_encoder_graph(self, joint_space: int, num_layers: int):
         """Encodes the text it gets as input using a bidirectional rnn.
@@ -98,7 +98,9 @@ class VsePpModel:
             last_fw = self.last_relevant(output_fw, self.captions_len)
             last_bw = self.last_relevant(output_bw, self.captions_len)
 
-            return tf.add(last_fw, last_bw) / 2
+            averaged = tf.add(last_fw, last_bw) / 2
+
+            return tf.math.l2_normalize(averaged, axis=1)
 
     @staticmethod
     def last_relevant(output: tf.Tensor, length: tf.Tensor) -> tf.Tensor:
