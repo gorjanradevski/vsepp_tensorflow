@@ -14,7 +14,7 @@ Keras-Applications==1.0.8
 Keras-Preprocessing==1.1.0
 Markdown==3.1.1
 mock==3.0.5
-numpy==1.17.0
+numpy==1.22.0
 protobuf==3.9.1
 ruamel.yaml==0.16.0
 ruamel.yaml.clib==0.1.0
